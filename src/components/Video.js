@@ -1,6 +1,6 @@
 import "./Video.css";
 
-function Video({ title, channel, views, time, verified, id }) {
+function Video({ title, channel, views, time, verified, id, children }) {
   return (
     <div className="container">
       <div className="pic">
@@ -13,12 +13,9 @@ function Video({ title, channel, views, time, verified, id }) {
       <div className="views">
         {views} views <span>.</span> {time}
       </div>
+      {children}
     </div>
   );
 }
 
-function Thumbnail() {
-  return <h1>Thumbnail</h1>;
-}
-
-export { Video, Thumbnail };
+export default Video;

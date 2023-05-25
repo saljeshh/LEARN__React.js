@@ -1,44 +1,11 @@
 import "./App.css";
-import { Video } from "./components/Video";
+import videos from "./data/data";
+import Video from "./components/Video";
+import PlayButton from "./components/PlayButton";
 
 function App() {
-  const videos = [
-    {
-      id: 1,
-      title: "React Js",
-      channel: "Saljesh Codes",
-      views: "12M",
-      time: "2 years ago",
-      verified: true,
-    },
-    {
-      id: 2,
-      title: "Node Js",
-      channel: "Saljesh Codes",
-      views: "2M",
-      time: "11 months ago",
-      verified: false,
-    },
-    {
-      id: 3,
-      title: "Express Js",
-      channel: "Saljesh Codes",
-      views: "4M",
-      time: "2 months ago",
-      verified: true,
-    },
-    {
-      id: 4,
-      title: "Mongo db",
-      channel: "Saljesh Codes",
-      views: "900K",
-      time: "6 months ago",
-      verified: false,
-    },
-  ];
-
   return (
-    <div className="App">
+    <div className="App" onClick={() => console.log("APP")}>
       {videos.map((video) => (
         <Video
           key={video.id}
@@ -48,25 +15,23 @@ function App() {
           views={video.views}
           time={video.time}
           verified={video.verified}
-        />
+        >
+          {/* use children in another video componenet */}
+          <PlayButton
+            onPlay={() => console.log("Playing..." + video.title)}
+            onPause={() => console.log("Pausing..." + video.title)}
+          >
+            {video.title}
+          </PlayButton>
+        </Video>
       ))}
 
-      {/* <Video {...object[1]} /> */}
-      {/* <Video
-        title="Mongo db"
-        channel="Saljesh Codes"
-        views="890K"
-        time="6 months ago"
-        verified={1}
-      />
-
-      <Video
-        title="Node js"
-        channel="Saljesh Codes"
-        views="1M"
-        time="2 months ago"
-        verified={false}
+      {/* <PlayButton
+        title="Play"
+        onPlay={() => console.log("Play")}
+        onPause={() => console.log("Pause")}
       /> */}
+      {/* <PlayButton title="Pause" onClick={() => alert("Pause")} /> */}
     </div>
   );
 }
