@@ -1,25 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import "./PlayButton.css";
 
 const PlayButton = ({ children, onPlay, onPause }) => {
-  let playing = false;
+  const [playing, setPlaying] = useState(false);
 
   function handleClick(e) {
-    e.preventPropagation();
+    e.stopPropagation();
 
     if (playing) {
       onPause();
     } else {
       onPlay();
     }
-    playing = !playing;
+
+    setPlaying(!playing);
   }
 
   return (
     <>
       {/* this will get called always as its expression so we need to write handler functions */}
       {/* <button onClick={console.log("play")}>Play</button> */}
-      <button onClick={handleClick}>{children}</button>
+      <button onClick={handleClick}>
+        {children} {playing ? "⏸" : "▶"}
+      </button>
     </>
   );
 };
