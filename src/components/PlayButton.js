@@ -18,8 +18,6 @@ const PlayButton = ({ children, onPlay, onPause }) => {
 
   return (
     <>
-      {/* this will get called always as its expression so we need to write handler functions */}
-      {/* <button onClick={console.log("play")}>Play</button> */}
       <button onClick={handleClick}>
         {children} {playing ? "⏸" : "▶"}
       </button>
