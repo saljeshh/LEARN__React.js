@@ -1,5 +1,5 @@
 import "./AddVideo.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const initialState = {
   time: "2 minutes ago",
@@ -9,12 +9,26 @@ const initialState = {
   views: "",
 };
 
-const AddVideo = ({ addVideos }) => {
+const AddVideo = ({ addVideos, updateVideos, editableVideo }) => {
   const [video, setVideo] = useState(initialState);
+
+  // runs when component mount/render happens
+  useEffect(() => {
+    //console.log("Effect");
+    if (editableVideo) {
+      // when editablevideo is not null only run or error, null.title// hunxa tala form ma
+      setVideo(editableVideo);
+    }
+  }, [editableVideo]);
 
   function handleSubmit(e) {
     e.preventDefault();
-    addVideos(video);
+
+    if (editableVideo) {
+      updateVideos(video);
+    } else {
+      addVideos(video);
+    }
     setVideo(initialState);
     //console.log(video);
   }
@@ -48,7 +62,7 @@ const AddVideo = ({ addVideos }) => {
         style={{ width: "150px", padding: "10px" }}
         onClick={handleSubmit}
       >
-        Add Video
+        {editableVideo ? "Edit" : "Add"}
       </button>
     </form>
   );

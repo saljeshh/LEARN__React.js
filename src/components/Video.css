@@ -4,6 +4,7 @@
 }
 
 .container {
+    position: relative;
     width: 15em;
     margin: 0 0.2em;
     float: left;
@@ -28,4 +29,16 @@
 
 .views span {
     padding: 0 0.5em;
+}
+
+.close{
+    position: absolute;
+    width: fit-content;
+    right: 0;
+}
+
+.edit {
+    position: absolute;
+    width: fit-content;
+    left: 0;
 }
