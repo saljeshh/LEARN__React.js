@@ -4,10 +4,18 @@
 }
 
 .container {
-    position: relative;
     width: 15em;
     margin: 0 0.2em;
     float: left;
+    position: relative;
+}
+
+.container.darkMode {
+    color: white
+}
+
+.container.lightMode {
+    color: black
 }
 
 .pic img {
@@ -17,13 +25,19 @@
 .title {
     font-weight: bold;
     margin-bottom: 1em;
-    color: white
 }
 
-.channel,
-.views {
+.darkMode .channel,
+.darkMode .views {
     font-size: small;
     color: #ccc;
+    margin-bottom: 0.2em;
+}
+
+.lightMode .channel,
+.lightMode .views {
+    font-size: small;
+    color: black;
     margin-bottom: 0.2em;
 }
 
@@ -31,14 +45,12 @@
     padding: 0 0.5em;
 }
 
-.close{
+.close {
     position: absolute;
-    width: fit-content;
     right: 0;
 }
 
 .edit {
     position: absolute;
-    width: fit-content;
-    left: 0;
+    right: 4em;
 }

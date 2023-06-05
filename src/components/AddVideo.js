@@ -9,7 +9,7 @@ const initialState = {
   views: "",
 };
 
-const AddVideo = ({ dispatch, updateVideos, editableVideo }) => {
+const AddVideo = ({ dispatch, editableVideo }) => {
   const [video, setVideo] = useState(initialState);
 
   // runs when component mount/render happens
