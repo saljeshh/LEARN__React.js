@@ -8,12 +8,15 @@ function Video({
   verified,
   id,
   children,
-  deleteVideo,
+  dispatch,
   editVideo,
 }) {
   return (
     <div className="container">
-      <button className="close" onClick={() => deleteVideo(id)}>
+      <button
+        className="close"
+        onClick={() => dispatch({ type: "DELETE", payload: id })}
+      >
         X
       </button>
 

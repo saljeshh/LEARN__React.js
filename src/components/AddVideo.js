@@ -9,7 +9,7 @@ const initialState = {
   views: "",
 };
 
-const AddVideo = ({ addVideos, updateVideos, editableVideo }) => {
+const AddVideo = ({ dispatch, updateVideos, editableVideo }) => {
   const [video, setVideo] = useState(initialState);
 
   // runs when component mount/render happens
@@ -25,9 +25,9 @@ const AddVideo = ({ addVideos, updateVideos, editableVideo }) => {
     e.preventDefault();
 
     if (editableVideo) {
-      updateVideos(video);
+      dispatch({ type: "UPDATE", payload: video });
     } else {
-      addVideos(video);
+      dispatch({ type: "ADD", payload: video });
     }
     setVideo(initialState);
     //console.log(video);

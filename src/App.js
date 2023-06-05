@@ -35,39 +35,15 @@ function App() {
 
   const [videos, dispatch] = useReducer(videoReducer, videoData);
 
-  const addVideos = (video) => {
-    dispatch({ type: "ADD", payload: video });
-    // this is action in useReducer action: {type:add, payload:video}
-    // now we can remove this setVideo
-    //setVideos([...videos, { ...video, id: videos.length + 1 }]);
-  };
-
-  const deleteVideo = (id) => {
-    dispatch({ type: "DELETE", payload: id });
-    //setVideos(videos.filter((v) => v.id !== id));
-  };
-
   const editVideo = (id) => {
     setEditableVideo(videos.find((video) => video.id === id));
-  };
-
-  const updateVideos = (video) => {
-    dispatch({ type: "UPDATE", payload: video });
   };
 
   return (
     <>
       <div className="App" onClick={() => console.log("APP")}>
-        <AddVideo
-          addVideos={addVideos}
-          updateVideos={updateVideos}
-          editableVideo={editableVideo}
-        />
-        <VideoList
-          deleteVideo={deleteVideo}
-          editVideo={editVideo}
-          videos={videos}
-        />
+        <AddVideo dispatch={dispatch} editableVideo={editableVideo} />
+        <VideoList dispatch={dispatch} editVideo={editVideo} videos={videos} />
       </div>
     </>
   );

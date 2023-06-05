@@ -1,7 +1,7 @@
 import Video from "./Video";
 import PlayButton from "./PlayButton";
 
-const VideoList = ({ videos, deleteVideo, editVideo }) => {
+const VideoList = ({ videos, dispatch, editVideo }) => {
   return (
     <>
       {videos.map((video) => (
@@ -13,7 +13,7 @@ const VideoList = ({ videos, deleteVideo, editVideo }) => {
           views={video.views}
           time={video.time}
           verified={video.verified}
-          deleteVideo={deleteVideo}
+          dispatch={dispatch}
           editVideo={editVideo}
         >
           {/* use children in another video componenet */}
